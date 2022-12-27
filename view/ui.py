@@ -5,7 +5,7 @@ import numpy as np
 import win32gui
 
 # Import Model to Use In File
-model = load_model('hand_writing_recognition.h5')
+model = load_model('./controller/hand_writing_recognition.h5')
 
 # Predict Digit
 def predict_digit(img):
@@ -16,7 +16,7 @@ def predict_digit(img):
     img = img.convert('L')
     img = np.array(img)
 
-    # reshaping to support our model input and normalizing
+    # Reshaping to Support our Model Input and Normalizing
     img = img.reshape(1, 28, 28, 1)
     img = img/255.0
 
@@ -26,15 +26,17 @@ def predict_digit(img):
     return np.argmax(res), max(res)
 
 class Root:
-    
+    # Splash Window
     def begin(self):
+        # Window
         self.splash_root = Tk()
+        
         # Window Settings
-        self.splash_root.title('Splash Screen')
-        self.splash_root.config(background='#1d3557')
-        self.splash_root.geometry("500x250+500+250")
+        self.splash_root.title('Splash Screen')     
         self.splash_root.overrideredirect(True)
-
+        self.splash_root.geometry("500x250+500+250")
+        self.splash_root.config(background='#1d3557')
+        
         # Splash Title 
         self.splashLabel = Label(
             self.splash_root,
@@ -43,37 +45,41 @@ class Root:
             background = '#1d3557',
             font = ("Helvetica", 30)
         )
+        
+        # Space Between Top and Label
         self.splashLabel.pack(pady = 100)
 
         # After 3s Navigate to MainWindow
         self.splash_root.after(500, self.main_window)
         self.splash_root.mainloop()
     
+    # App Window
     def main_window(self):
         # Delete Window SplashRoot
         self.splash_root.destroy()
-
-        # Window Settings
+        
+        # Window
         self.root = Tk()
-        self.root.title('Hand Writing Recognition')
-        self.root.config(background='#1d3557')
-        # self.root.geometry("1024x800+320+0")
+        
+        # Window Settings
         self.root.state('zoomed')
+        self.root.config(background='#1d3557')
+        self.root.title('Hand Writing Recognition')
 
-        # getting screen's height in pixels
+        # Get Screen's Height in pixels
         height = self.root.winfo_screenheight()
         
-        # getting screen's width in pixels
+        # Get Screen's Width in pixels
         width = self.root.winfo_screenwidth()
 
         # Drawing Space For Digit
         self.canvas = Canvas(
             self.root,
-            width = width * 0.54,
-            height = height * 0.7,
+            bd = 5,
             bg = "#1d3557",
-            bd=5,
-            cursor = "dot"
+            cursor = "dot",
+            width = width * 0.54,
+            height = height * 0.7
         )
 
         # Status of Line
@@ -85,9 +91,9 @@ class Root:
         # Label Before PredictDigit 
         self.label = Label(
             self.root,
-            text = "Draw Digit Now..",
-            background='#1d3557',
             foreground='White',
+            background='#1d3557',
+            text = "Draw Digit Now..",
             font = ("Helvetica", 30, 'bold')
         )
 
@@ -98,13 +104,13 @@ class Root:
         self.btn_clear = Button(
             self.root,
             text = "Clear",
-            fg = '#f1faee',
-            activeforeground = '#f1faee',
-            bg = 'red',
-            activebackground = 'red',
-            width = 20,
-            height = 2,
             bd = 0,
+            height = 2,
+            width = 20,
+            bg = 'red',
+            fg = '#f1faee',
+            activebackground = 'red',
+            activeforeground = '#f1faee',
             font = ("Helvetica", 14, 'bold'),        
             command = self.clear_all
         )
@@ -116,14 +122,14 @@ class Root:
         self.btn_classify = Button(
             self.root,
             text = "Recognise",
-            fg = '#f1faee',
-            activeforeground = '#f1faee',
-            bg = 'green',
-            activebackground = 'green',
-            width = 20,
-            height = 2,
             bd = 0,
-            font = ("Helvetica", 14, 'bold'),    
+            height = 2,
+            width = 20,
+            bg = 'green',
+            fg = '#f1faee',
+            activebackground = 'green',
+            activeforeground = '#f1faee',
+            font = ("Helvetica", 14, 'bold'),         
             command = self.classify_handwriting
         )
 
@@ -132,12 +138,13 @@ class Root:
 
         self.root.mainloop()
 
-    # CLEAR DRAWING SPACE
+    # Clear Drawing Space
     def clear_all(self):
-        self.label.configure(text='Draw Digit Now..')
-        self.x = 0
-        self.y = 0
+        self.x = 0.0
+        self.y = 0.0
         self.canvas.delete("all")
+        self.label.configure(text='Draw Digit Now..')
+        
 
     # Drawing Digit
     def draw_lines(self, event):
@@ -155,8 +162,10 @@ class Root:
             self.y + r,
             fill='white'
         )
-
+        
+    # Classify Digit
     def classify_handwriting(self):
+        # If Draw Space Not Empty
         if self.x != 0 or self.y ==0 :
             # Get The Handle Of The Canvas
             HWND = self.canvas.winfo_id()

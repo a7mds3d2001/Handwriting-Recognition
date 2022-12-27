@@ -5,7 +5,7 @@ import numpy as np
 import win32gui
 
 # Import Model to Use In File
-model = load_model('./controller/hand_writing_recognition.h5')
+model = load_model('./controller/model_1.h5')
 
 # Predict Digit
 def predict_digit(img):
@@ -50,7 +50,7 @@ class Root:
         self.splashLabel.pack(pady = 100)
 
         # After 3s Navigate to MainWindow
-        self.splash_root.after(500, self.main_window)
+        self.splash_root.after(3000, self.main_window)
         self.splash_root.mainloop()
     
     # App Window
@@ -65,7 +65,7 @@ class Root:
         self.root.state('zoomed')
         self.root.config(background='#1d3557')
         self.root.title('Hand Writing Recognition')
-
+        
         # Get Screen's Height in pixels
         height = self.root.winfo_screenheight()
         
@@ -78,7 +78,7 @@ class Root:
             bd = 5,
             bg = "#1d3557",
             cursor = "dot",
-            width = width * 0.54,
+            width = width * 0.5,
             height = height * 0.7
         )
 
@@ -93,6 +93,7 @@ class Root:
             self.root,
             foreground='White',
             background='#1d3557',
+            width=20,
             text = "Draw Digit Now..",
             font = ("Helvetica", 30, 'bold')
         )

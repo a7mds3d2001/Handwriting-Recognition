@@ -2,17 +2,26 @@
 
 An Hand Writing Recognition Project, To predict digits.
 
+### How to run the app
+
 To get a local copy up and running follow these simple steps:
 - Clone the repo
 - open the project in your IDE
 - in a terminal, cd to the project directory
 - run the following command to install the dependencies:
-```
-pip install keras
-pip install numpy
-pip install pillow
-pip install tensorflow
-```
+
+  ```
+  pip install keras
+  ```
+  ```
+  pip install numpy
+  ```
+  ```
+  pip install pillow
+  ```
+  ```
+  pip install tensorflow
+  ```
 
 ### Built With
 

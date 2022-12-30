@@ -5,7 +5,7 @@ import numpy as np
 import win32gui
 
 # Import Model to Use In File
-model = load_model('./controller/model_1.h5')
+model = load_model('./controller/model.h5')
 
 # Predict Digit
 def predict_digit(img):
@@ -153,7 +153,7 @@ class Root:
         self.y = event.y
 
         # Size Of Point
-        r = 15
+        r = 30
 
         # Point
         self.canvas.create_oval(

@@ -1,11 +1,11 @@
-from keras.models import load_model
 from PIL import ImageGrab
+import tensorflow as tf
 from tkinter import *
 import numpy as np
 import win32gui
 
 # Import Model to Use In File
-model = load_model('./controller/model.h5')
+model = tf.keras.models.load_model('./controller/model.h5')
 
 # Predict Digit
 def predict_digit(img):

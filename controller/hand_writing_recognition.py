@@ -1,7 +1,6 @@
 # Import the libraries 
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Tensorflow 
 # We can build machine learning model by it.
@@ -49,6 +48,8 @@ print('Test accuracy:', test_acc)
 
 # Save The Model
 model.save('model.h5')
+
+# import matplotlib.pyplot as plt
 
 # Use the model to classify new images
 # predictions = model.predict(x_test)

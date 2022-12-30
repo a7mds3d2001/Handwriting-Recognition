@@ -9,9 +9,8 @@ To get a local copy up and running follow these simple steps:
 - open the project in your IDE
 - in a terminal, cd to the project directory
 - run the following command to install the dependencies:
-
   ```
-  pip install keras
+  pip install tensorflow
   ```
   ```
   pip install numpy
@@ -19,9 +18,9 @@ To get a local copy up and running follow these simple steps:
   ```
   pip install pillow
   ```
-  ```
-  pip install tensorflow
-  ```
+  <!-- ```
+  pip install keras
+  ``` -->
 
 ### Built With
 

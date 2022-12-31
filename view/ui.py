@@ -91,9 +91,9 @@ class Root:
         # Label Before PredictDigit 
         self.label = Label(
             self.root,
-            foreground='White',
-            background='#1d3557',
-            width=20,
+            foreground = 'White',
+            background = '#1d3557',
+            width = 20,
             text = "Draw Digit Now..",
             font = ("Helvetica", 30, 'bold')
         )

@@ -1,6 +1,5 @@
-# Import the libraries 
+# Import Tensorflow libraries 
 import tensorflow as tf
-import numpy as np
 
 # Tensorflow 
 # We can build machine learning model by it.
@@ -52,7 +51,7 @@ model.save('model.h5')
 # import matplotlib.pyplot as plt
 
 # Use the model to classify new images
-# predictions = model.predict(x_test)
+# predictions = model.+(x_test)
 # predicted_labels = np.argmax(predictions, axis=1)
 
 # # Plot some examples of the model's predictions
